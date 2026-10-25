@@ -1,6 +1,6 @@
-# Luar push (servidor de avisos de Luar Mind)
+# Luar push (servidor de avisos de Luar)
 
-Servidor pequeño que manda los recordatorios de Luar Mind aunque la app esté cerrada (Web Push).
+Servidor pequeño que manda los recordatorios de Luar aunque la app esté cerrada (Web Push).
 
 Qué guarda: la suscripción de avisos del navegador, zona horaria, hora del aviso diario, "no molestar", hora de las tareas de hoy
 (y su texto solo si la persona lo permite), si registró su ánimo hoy y su racha. **No recibe** diario, ánimos, pensamientos, chat ni perfil.
@@ -12,7 +12,7 @@ Qué guarda: la suscripción de avisos del navegador, zona horaria, hora del avi
    - Runtime: Node · Build command: `npm install` · Start command: `npm start` · Plan: Free.
 3. Variables de entorno (Environment):
    - `VAPID_PUBLIC_KEY` y `VAPID_PRIVATE_KEY`: genéralas una sola vez con `npx web-push generate-vapid-keys` y no las cambies (si cambian, hay que volver a activar los avisos en cada dispositivo).
-   - `ALLOWED_ORIGINS`: la dirección de tu web de Luar Mind, por ejemplo `https://luar-mind.onrender.com`.
+   - `ALLOWED_ORIGINS`: la dirección de tu web de Luar, por ejemplo `https://luar-mind.onrender.com`.
    - `VAPID_SUBJECT` (opcional): una dirección `https://` o `mailto:` de contacto.
 4. En la app: **Cuenta → Recordatorios y sonido → Avisos con la app cerrada**. Si el nombre del servicio no es `luar-push`, pega su dirección en "Avanzado".
 

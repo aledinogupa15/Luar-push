@@ -1,4 +1,4 @@
-/* Servidor de avisos push de Luar Mind.
+/* Servidor de avisos push de Luar.
    Guarda solo lo mínimo para mandar recordatorios: la suscripción push del navegador, la zona horaria,
    la hora del aviso diario, el horario de "no molestar", la hora de las tareas de hoy (y su texto solo si la
    persona lo permite), si ya registró su ánimo hoy y el número de su racha.
@@ -54,7 +54,7 @@ function createApp(opts) {
     if (p.quiet && (L.m >= 22 * 60 + 30 || L.m < 7 * 60)) return out;
     const fresh = p.date === L.date;                // la app sincronizó hoy
     if (p.checkin && L.m >= hm(p.checkin) && L.m < hm(p.checkin) + 120 && !(fresh && p.hasEntry))
-      out.push({ k: 'ci-' + L.date, tag: 'luar-checkin', title: 'Luar Mind', body: CHECK[(+L.date.slice(-2)) % CHECK.length] + (fresh && p.streak >= 2 ? ' Tu racha es de ' + p.streak + ' días.' : '') });
+      out.push({ k: 'ci-' + L.date, tag: 'luar-checkin', title: 'Luar', body: CHECK[(+L.date.slice(-2)) % CHECK.length] + (fresh && p.streak >= 2 ? ' Tu racha es de ' + p.streak + ' días.' : '') });
     if (p.tasksOn && fresh) p.tasks.forEach(x => { const tm = hm(x.time); if (L.m >= tm && L.m < tm + 60) out.push({ k: 'tk-' + x.id + '-' + L.date, tag: 'luar-task-' + x.id, title: x.tpl ? 'Autocuidado' : 'Recordatorio', body: x.text || 'Tienes una tarea pendiente en tu agenda.' }); });
     return { list: out, date: L.date };
   }
